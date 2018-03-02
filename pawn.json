@@ -1,9 +1,10 @@
 {
-	"user": "sampctl",
-	"repo": "samp-stdutil",
-	"entry": "test.pwn",
-	"output": "test.amx",
-	"dependencies": [
-		"sampctl/samp-stdlib"
-	]
+    "user": "sampctl",
+    "repo": "samp-stdutil",
+    "entry": "test.pwn",
+    "output": "test.amx",
+    "dependencies": ["sampctl/samp-stdlib"],
+    "runtime": {
+        "mode": "main"
+    }
 }
