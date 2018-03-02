@@ -112,5 +112,5 @@ stock abs(int) {
 
 // Checks if a value is not a number
 stock IsNaN(Float:number) {
-	return !(number <= 0 || number > 0);
+	return number != number;
 }
