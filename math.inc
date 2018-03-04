@@ -27,7 +27,7 @@ stock Float:GetAbsoluteAngle(Float:angle) {
 // Returns the offset heading from north between a point and a destination
 stock Float:GetAngleToPoint(Float:fPointX, Float:fPointY, Float:fDestX, Float:fDestY) {
 	return GetAbsoluteAngle(-(
-		90 - (
+		90.0 - (
 			atan2(
 				(fDestY - fPointY),
 				(fDestX - fPointX)
@@ -38,11 +38,7 @@ stock Float:GetAngleToPoint(Float:fPointX, Float:fPointY, Float:fDestX, Float:fD
 
 // Returns the distance between two points in 3D space
 stock Float:GetDistance3D(Float:x1, Float:y1, Float:z1, Float:x2, Float:y2, Float:z2) {
-	return floatsqroot(
-		((x1 - x2) * (x1 - x2)) +
-		((y1 - y2) * (y1 - y2)) +
-		((z1 - z2) * (z1 - z2))
-	);
+	return VectorSize(x1 - x2, y1 - y2, z1 - z2);
 }
 
 // Returns the distance between two points in 2D space
@@ -60,19 +56,18 @@ stock Float:GetDistancePointLine(
 	Float:point_x, Float:point_y, Float:point_z
 ) {
 	return (
-		floatsqroot(
-			floatpower((vector_y) * ((point_z) - (line_z)) - (vector_z) * ((point_y) - (line_y)), 2.0) +
-			floatpower((vector_z) * ((point_x) - (line_x)) - (vector_x) * ((point_z) - (line_z)), 2.0) +
-			floatpower((vector_x) * ((point_y) - (line_y)) - (vector_y) * ((point_x) - (line_x)), 2.0)
-		) /
-		floatsqroot((vector_x) * (vector_x) + (vector_y) * (vector_y) + (vector_z) * (vector_z))
+		VectorSize(
+			(vector_y) * ((point_z) - (line_z)) - (vector_z) * ((point_y) - (line_y),
+			(vector_z) * ((point_x) - (line_x)) - (vector_x) * ((point_z) - (line_z),
+			(vector_x) * ((point_y) - (line_y)) - (vector_y) * ((point_x) - (line_x)
+		) / VectorSize(vector_x, vector_y, vector_z)
 	);
 }
 
 // 2D Projection position based on distance and angle
 stock GetXYFromAngle(&Float:x, &Float:y, Float:a, Float:distance) {
-	x += (distance*floatsin(-a,degrees));
-	y += (distance*floatcos(-a,degrees));
+	x += (distance * floatsin(-a, degrees));
+	y += (distance * floatcos(-a, degrees));
 }
 
 // 3D Projection position based on distance and angles
@@ -84,7 +79,7 @@ stock GetXYZFromAngle(&Float:x, &Float:y, &Float:z, Float:angle, Float:elevation
 
 // Convert 3D velocity vectors to a single velocity unit (close to Km/h in SA:MP)
 stock Float:CalculateVelocity(Float:x, Float:y, Float:z) {
-	return floatsqroot((x * x) + (y * y) + (z * z)) * 150.0;
+	return VectorSize(x, y, z) * 150.0;
 }
 
 // Return a floating point random number
