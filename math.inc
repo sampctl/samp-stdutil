@@ -38,11 +38,7 @@ stock Float:GetAngleToPoint(Float:fPointX, Float:fPointY, Float:fDestX, Float:fD
 
 // Returns the distance between two points in 3D space
 stock Float:GetDistance3D(Float:x1, Float:y1, Float:z1, Float:x2, Float:y2, Float:z2) {
-	return floatsqroot(
-		((x1 - x2) * (x1 - x2)) +
-		((y1 - y2) * (y1 - y2)) +
-		((z1 - z2) * (z1 - z2))
-	);
+	return VectorSize(x1 - x2, y1 - y2, z1 - z2);
 }
 
 // Returns the distance between two points in 2D space
