@@ -83,7 +83,7 @@ stock GetXYZFromAngle(&Float:x, &Float:y, &Float:z, Float:angle, Float:elevation
 
 // Convert 3D velocity vectors to a single velocity unit (close to Km/h in SA:MP)
 stock Float:CalculateVelocity(Float:x, Float:y, Float:z) {
-	return floatsqroot((x * x) + (y * y) + (z * z)) * 150.0;
+	return VectorSize(x, y, z) * 150.0;
 }
 
 // Return a floating point random number
