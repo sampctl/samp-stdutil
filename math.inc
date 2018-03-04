@@ -27,7 +27,7 @@ stock Float:GetAbsoluteAngle(Float:angle) {
 // Returns the offset heading from north between a point and a destination
 stock Float:GetAngleToPoint(Float:fPointX, Float:fPointY, Float:fDestX, Float:fDestY) {
 	return GetAbsoluteAngle(-(
-		90 - (
+		90.0 - (
 			atan2(
 				(fDestY - fPointY),
 				(fDestX - fPointX)
@@ -66,8 +66,8 @@ stock Float:GetDistancePointLine(
 
 // 2D Projection position based on distance and angle
 stock GetXYFromAngle(&Float:x, &Float:y, Float:a, Float:distance) {
-	x += (distance*floatsin(-a,degrees));
-	y += (distance*floatcos(-a,degrees));
+	x += (distance * floatsin(-a, degrees));
+	y += (distance * floatcos(-a, degrees));
 }
 
 // 3D Projection position based on distance and angles
