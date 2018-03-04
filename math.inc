@@ -60,12 +60,11 @@ stock Float:GetDistancePointLine(
 	Float:point_x, Float:point_y, Float:point_z
 ) {
 	return (
-		floatsqroot(
-			floatpower((vector_y) * ((point_z) - (line_z)) - (vector_z) * ((point_y) - (line_y)), 2.0) +
-			floatpower((vector_z) * ((point_x) - (line_x)) - (vector_x) * ((point_z) - (line_z)), 2.0) +
-			floatpower((vector_x) * ((point_y) - (line_y)) - (vector_y) * ((point_x) - (line_x)), 2.0)
-		) /
-		floatsqroot((vector_x) * (vector_x) + (vector_y) * (vector_y) + (vector_z) * (vector_z))
+		VectorSize(
+			(vector_y) * ((point_z) - (line_z)) - (vector_z) * ((point_y) - (line_y),
+			(vector_z) * ((point_x) - (line_x)) - (vector_x) * ((point_z) - (line_z),
+			(vector_x) * ((point_y) - (line_y)) - (vector_y) * ((point_x) - (line_x)
+		) / VectorSize(vector_x, vector_y, vector_z)
 	);
 }
 
