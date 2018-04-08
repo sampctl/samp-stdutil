@@ -91,6 +91,17 @@ stock Float:frandom(Float:max, Float:min = 0.0, decimalPlaces = 4) {
 	return float(random(maxRounded - minRounded) + minRounded) / multiplier;
 }
 
+// Forces a floating point value to be within a range (default arguments represent negative and positive infinity respectively)
+stock Float:fclamp(Float:value, Float:min = Float:0xFF800000, Float:max = Float:0x7F800000) {
+	if (value < min) {
+		return min;
+	}
+	if (value > max) {
+		return max;
+	}
+	return value;
+}
+
 // Checks if one angle is within range of another angle
 stock AngleInRangeOfAngle(Float:a1, Float:a2, Float:range) {
 	a1 -= a2;
