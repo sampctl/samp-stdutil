@@ -57,9 +57,9 @@ stock Float:GetDistancePointLine(
 ) {
 	return (
 		VectorSize(
-			(vector_y) * ((point_z) - (line_z)) - (vector_z) * ((point_y) - (line_y),
-			(vector_z) * ((point_x) - (line_x)) - (vector_x) * ((point_z) - (line_z),
-			(vector_x) * ((point_y) - (line_y)) - (vector_y) * ((point_x) - (line_x)
+			(vector_y) * ((point_z) - (line_z)) - (vector_z) * ((point_y) - (line_y)),
+			(vector_z) * ((point_x) - (line_x)) - (vector_x) * ((point_z) - (line_z)),
+			(vector_x) * ((point_y) - (line_y)) - (vector_y) * ((point_x) - (line_x))
 		) / VectorSize(vector_x, vector_y, vector_z)
 	);
 }
@@ -89,6 +89,17 @@ stock Float:frandom(Float:max, Float:min = 0.0, decimalPlaces = 4) {
 		minRounded = floatround(min * multiplier),
 		maxRounded = floatround(max * multiplier);
 	return float(random(maxRounded - minRounded) + minRounded) / multiplier;
+}
+
+// Forces a floating point value to be within a range (default arguments represent negative and positive infinity respectively)
+stock Float:fclamp(Float:value, Float:min = Float:0xFF800000, Float:max = Float:0x7F800000) {
+	if (value < min) {
+		return min;
+	}
+	if (value > max) {
+		return max;
+	}
+	return value;
 }
 
 // Checks if one angle is within range of another angle
