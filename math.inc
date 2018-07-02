@@ -83,7 +83,7 @@ stock Float:CalculateVelocity(Float:x, Float:y, Float:z) {
 }
 
 // Return a floating point random number
-stock Float:frandom(Float:max, Float:min = 0.0, decimalPlaces = 4) {
+stock Float:floatrandom(Float:max, Float:min = 0.0, decimalPlaces = 4) {
 	new
 		Float:multiplier = floatpower(10.0, decimalPlaces),
 		minRounded = floatround(min * multiplier),
@@ -92,7 +92,7 @@ stock Float:frandom(Float:max, Float:min = 0.0, decimalPlaces = 4) {
 }
 
 // Forces a floating point value to be within a range (default arguments represent negative and positive infinity respectively)
-stock Float:fclamp(Float:value, Float:min = Float:0xFF800000, Float:max = Float:0x7F800000) {
+stock Float:floatclamp(Float:value, Float:min = Float:0xFF800000, Float:max = Float:0x7F800000) {
 	if (value < min) {
 		return min;
 	}
